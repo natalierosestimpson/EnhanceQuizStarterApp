@@ -53,11 +53,11 @@ class ViewController: UIViewController {
  
    func displayQuestion() {
         let currentQuestion = quizQuestions.randomQuestion()
-        questionField.text = currentQuestion["Question"] as? String
-        trueButton.setTitle(currentQuestion["Option 1"] as? String, for: UIControl.State.normal)
-        falseButton.setTitle(currentQuestion["Option 2"] as? String, for: UIControl.State.normal)
-        buttonThree.setTitle(currentQuestion["Option 3"] as? String, for: UIControl.State.normal)
-        buttonFour.setTitle(currentQuestion["Option 4"] as? String, for: UIControl.State.normal)
+        questionField.text = currentQuestion.question as? String
+        trueButton.setTitle(currentQuestion.optionOne as? String, for: UIControl.State.normal)
+        falseButton.setTitle(currentQuestion.optionTwo as? String, for: UIControl.State.normal)
+        buttonThree.setTitle(currentQuestion.optionThree as? String, for: UIControl.State.normal)
+        buttonFour.setTitle(currentQuestion.optionFour as? String, for: UIControl.State.normal)
     
         playAgainButton.isHidden = true
     }
@@ -106,7 +106,7 @@ class ViewController: UIViewController {
         questionsAsked += 1
         
         
-        let correctAnswer : Int = quizQuestions.trivia[indexOfSelectedQuestion]["Answer"] as! Int
+        let correctAnswer : Int = quizQuestions.trivia[indexOfSelectedQuestion].answer as! Int
         
         if (sender === trueButton &&  correctAnswer == 1) || (sender === falseButton && correctAnswer == 2) || (sender === buttonThree && correctAnswer == 3) || (sender === buttonFour && correctAnswer == 4) {
             correctQuestions += 1

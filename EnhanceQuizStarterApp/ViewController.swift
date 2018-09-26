@@ -9,6 +9,7 @@
 import UIKit
 import GameKit
 import AudioToolbox
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonFour: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
 
-    let quizQuestions = QuizQuestions()
+    var quizQuestions = QuizQuestions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,9 @@ class ViewController: UIViewController {
     // MARK: - Helpers
     
     func loadGameStartSound() {
-        //let path = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-        //let soundUrl = URL(fileURLWithPath: path!)
-       // AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
+        let path = Bundle.main.path(forResource: "GameSound", ofType: "wav")
+        let soundUrl = URL(fileURLWithPath: path!)
+       AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
     }
     
     func playGameStartSound() {
@@ -53,11 +54,11 @@ class ViewController: UIViewController {
  
    func displayQuestion() {
         let currentQuestion = quizQuestions.randomQuestion()
-        questionField.text = currentQuestion.question as? String
-        trueButton.setTitle(currentQuestion.optionOne as? String, for: UIControl.State.normal)
-        falseButton.setTitle(currentQuestion.optionTwo as? String, for: UIControl.State.normal)
-        buttonThree.setTitle(currentQuestion.optionThree as? String, for: UIControl.State.normal)
-        buttonFour.setTitle(currentQuestion.optionFour as? String, for: UIControl.State.normal)
+        questionField.text = currentQuestion.question
+        trueButton.setTitle(currentQuestion.optionOne, for: UIControl.State.normal)
+        falseButton.setTitle(currentQuestion.optionTwo, for: UIControl.State.normal)
+        buttonThree.setTitle(currentQuestion.optionThree, for: UIControl.State.normal)
+        buttonFour.setTitle(currentQuestion.optionFour, for: UIControl.State.normal)
     
         playAgainButton.isHidden = true
     }
@@ -106,13 +107,24 @@ class ViewController: UIViewController {
         questionsAsked += 1
         
         
-        let correctAnswer : Int = quizQuestions.trivia[indexOfSelectedQuestion].answer as! Int
+        let correctAnswer : Int = quizQuestions.trivia[indexOfSelectedQuestion].answer
         
         if (sender === trueButton &&  correctAnswer == 1) || (sender === falseButton && correctAnswer == 2) || (sender === buttonThree && correctAnswer == 3) || (sender === buttonFour && correctAnswer == 4) {
             correctQuestions += 1
             questionField.text = "Correct!"
-        } else {
-            questionField.text = "Sorry, wrong answer!"
+        }
+        
+        else {
+            
+        
+            if quizQuestions.trivia[indexOfSelectedQuestion].answer == 1 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionOne)" }
+            
+            else if quizQuestions.trivia[indexOfSelectedQuestion].answer == 2 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionTwo)" }
+            
+            else if quizQuestions.trivia[indexOfSelectedQuestion].answer == 3 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionThree)" }
+            
+            else { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionFour)" }
+        
         }
         
         loadNextRound(delay: 2)

@@ -13,6 +13,8 @@
 		8BB5B74021550929002A37AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5B73F21550929002A37AD /* Assets.xcassets */; };
 		8BB5B74321550929002A37AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5B74121550929002A37AD /* LaunchScreen.storyboard */; };
 		8BB5B74B215B86FF002A37AD /* QuizQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5B74A215B86FF002A37AD /* QuizQuestions.swift */; };
+		8BB5B74F215BE5EA002A37AD /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5B74E215BE5EA002A37AD /* QuizManager.swift */; };
+		8BB5B751215C24E6002A37AD /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5B750215C24E6002A37AD /* GameSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		8BB5B74221550929002A37AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BB5B74421550929002A37AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB5B74A215B86FF002A37AD /* QuizQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8BB5B74E215BE5EA002A37AD /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizManager.swift; sourceTree = "<group>"; };
+		8BB5B750215C24E6002A37AD /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = GameSound.wav; path = ../../EnhanceQuizStarter/EnhanceQuizStarter/GameSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				8BB5B73F21550929002A37AD /* Assets.xcassets */,
 				8BB5B74121550929002A37AD /* LaunchScreen.storyboard */,
 				8BB5B74421550929002A37AD /* Info.plist */,
+				8BB5B750215C24E6002A37AD /* GameSound.wav */,
+				8BB5B74E215BE5EA002A37AD /* QuizManager.swift */,
 			);
 			path = EnhanceQuizStarterApp;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB5B751215C24E6002A37AD /* GameSound.wav in Resources */,
 				8BB5B74321550929002A37AD /* LaunchScreen.storyboard in Resources */,
 				8BB5B74021550929002A37AD /* Assets.xcassets in Resources */,
 				8BB5B73E21550928002A37AD /* Main.storyboard in Resources */,
@@ -138,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB5B74F215BE5EA002A37AD /* QuizManager.swift in Sources */,
 				8BB5B73B21550928002A37AD /* ViewController.swift in Sources */,
 				8BB5B74B215B86FF002A37AD /* QuizQuestions.swift in Sources */,
 				8BB5B73921550928002A37AD /* AppDelegate.swift in Sources */,

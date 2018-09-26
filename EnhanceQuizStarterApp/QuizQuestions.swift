@@ -8,9 +8,14 @@
 
 import GameKit
 
+var quizManager = QuizManager()
+let viewController = ViewController()
+
 //The struct below sets out the questions for the game and introduces a function to randomlly select a question
 
- var indexOfSelectedQuestion = 0
+var indexOfSelectedQuestion = 0
+var conditionSatistied = 0
+
 
 struct questionData {
     var question: String
@@ -22,7 +27,7 @@ struct questionData {
 }
 
 struct QuizQuestions {
-    let trivia = [
+    var trivia = [
     
     questionData(question : "This was the only US President to serve more than two consecutive terms.", optionOne : "George Washington", optionTwo : "Franklin D. Roosevelt", optionThree: "Woodrow Wilson", optionFour: "Andrew Jackson", answer : 2),
     
@@ -43,12 +48,38 @@ struct QuizQuestions {
     questionData(question: "Which country was the first to allow women to vote in national elections?", optionOne: "Poland", optionTwo: "United States", optionThree: "Sweden", optionFour: "Senegal", answer: 1),
     
     questionData(question: "Which of these countries won the most medals in the 2012 Summer Games?", optionOne: "France", optionTwo: "Germany", optionThree: "Japan", optionFour: "Great Britain", answer: 4)
-    
+        
     ]
-
+    
+  
+    
     func randomQuestion() -> questionData {
+       
+        
+        if viewController.questionsAsked == 0 {
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
+        }
+        
+        else { while conditionSatistied < viewController.questionsAsked {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
+         
+            for questionNumber in 0..<viewController.questionsAsked {
+               
+                if indexOfSelectedQuestion == quizManager.questionsAskedAlready[questionNumber] {conditionSatistied += 0}
+                else {conditionSatistied += 1}
+                
+                }
+             }
+            }
+    
+        conditionSatistied = 0
+        quizManager.markQuestionAsAlreadyUsed(index :
+        indexOfSelectedQuestion)
+ 
+    
+        
         return trivia[indexOfSelectedQuestion]
+        
     }
 }
     

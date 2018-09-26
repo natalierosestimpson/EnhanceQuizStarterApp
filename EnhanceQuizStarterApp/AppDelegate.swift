@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  EnhanceQuizStarterApp
+//  EnhanceQuizStarter
 //
-//  Created by James Devlin on 21/09/2018.
-//  Copyright © 2018 Natalie Stimpson. All rights reserved.
+//  Created by Pasan Premaratne on 3/12/18.
+//  Copyright © 2018 Treehouse. All rights reserved.
 //
 
 import UIKit

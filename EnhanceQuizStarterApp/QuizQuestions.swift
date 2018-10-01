@@ -1,21 +1,11 @@
-//
-//  QuizQuestions.swift
-//  EnhanceQuizStarterApp
-//
-//  Created by James Devlin on 26/09/2018.
-//  Copyright © 2018 Natalie Stimpson. All rights reserved.
-//
-
 import GameKit
 
-var quizManager = QuizManager()
 let viewController = ViewController()
 
-//The struct below sets out the questions for the game and introduces a function to randomlly select a question
+//The struct below sets out the questions for the game and introduces a function to randomlly shuffle the order of gthe questions
 
 var indexOfSelectedQuestion = 0
 var conditionSatistied = 0
-
 
 struct questionData {
     var question: String
@@ -51,36 +41,10 @@ struct QuizQuestions {
         
     ]
     
-  
-    
-    func randomQuestion() -> questionData {
-       
-        
-        if viewController.questionsAsked == 0 {
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        }
-        
-        else { while conditionSatistied < viewController.questionsAsked {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-         
-            for questionNumber in 0..<viewController.questionsAsked {
-               
-                if indexOfSelectedQuestion == quizManager.questionsAskedAlready[questionNumber] {conditionSatistied += 0}
-                else {conditionSatistied += 1}
-                
-                }
-             }
-            }
-    
-        conditionSatistied = 0
-        quizManager.markQuestionAsAlreadyUsed(index :
-        indexOfSelectedQuestion)
- 
-    
-        
-        return trivia[indexOfSelectedQuestion]
+    func shuffleTrivia() -> [questionData] {
+         let shuffledTrivia = trivia.shuffled()
+        return shuffledTrivia
         
     }
 }
-    
 

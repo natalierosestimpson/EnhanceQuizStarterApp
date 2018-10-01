@@ -30,8 +30,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonFour: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
 
-    var quizQuestions = QuizQuestions()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,11 +47,11 @@ class ViewController: UIViewController {
     }
     
     func playGameStartSound() {
-       // AudioServicesPlaySystemSound(gameSound)
+       AudioServicesPlaySystemSound(gameSound)
     }
  
    func displayQuestion() {
-        let currentQuestion = quizQuestions.randomQuestion()
+        let currentQuestion = randomTrivia[questionsAsked]
         questionField.text = currentQuestion.question
         trueButton.setTitle(currentQuestion.optionOne, for: UIControl.State.normal)
         falseButton.setTitle(currentQuestion.optionTwo, for: UIControl.State.normal)
@@ -104,10 +102,8 @@ class ViewController: UIViewController {
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
-        questionsAsked += 1
-        
-        
-        let correctAnswer : Int = quizQuestions.trivia[indexOfSelectedQuestion].answer
+    
+        let correctAnswer : Int = randomTrivia[questionsAsked].answer
         
         if (sender === trueButton &&  correctAnswer == 1) || (sender === falseButton && correctAnswer == 2) || (sender === buttonThree && correctAnswer == 3) || (sender === buttonFour && correctAnswer == 4) {
             correctQuestions += 1
@@ -117,16 +113,17 @@ class ViewController: UIViewController {
         else {
             
         
-            if quizQuestions.trivia[indexOfSelectedQuestion].answer == 1 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionOne)" }
+            if randomTrivia[questionsAsked].answer == 1 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(randomTrivia[questionsAsked].optionOne)" }
             
-            else if quizQuestions.trivia[indexOfSelectedQuestion].answer == 2 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionTwo)" }
+            else if randomTrivia[questionsAsked].answer == 2 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(randomTrivia[questionsAsked].optionTwo)" }
             
-            else if quizQuestions.trivia[indexOfSelectedQuestion].answer == 3 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionThree)" }
+            else if
+                randomTrivia[questionsAsked].answer == 3 { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(randomTrivia[questionsAsked].optionThree)" }
             
-            else { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(quizQuestions.trivia[indexOfSelectedQuestion].optionFour)" }
+            else { questionField.text = "Sorry, wrong answer! \n the correct answer is: \(randomTrivia[questionsAsked].optionFour)" }
         
         }
-        
+        questionsAsked += 1
         loadNextRound(delay: 2)
     }
     
@@ -138,6 +135,7 @@ class ViewController: UIViewController {
         buttonThree.isHidden = false
         buttonFour.isHidden = false
         
+        randomiseTriviaAgain()
         questionsAsked = 0
         correctQuestions = 0
         nextRound()

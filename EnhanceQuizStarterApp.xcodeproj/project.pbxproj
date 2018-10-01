@@ -63,12 +63,12 @@
 				8BB5B73821550928002A37AD /* AppDelegate.swift */,
 				8BB5B73A21550928002A37AD /* ViewController.swift */,
 				8BB5B74A215B86FF002A37AD /* QuizQuestions.swift */,
+				8BB5B74E215BE5EA002A37AD /* QuizManager.swift */,
 				8BB5B73C21550928002A37AD /* Main.storyboard */,
 				8BB5B73F21550929002A37AD /* Assets.xcassets */,
 				8BB5B74121550929002A37AD /* LaunchScreen.storyboard */,
 				8BB5B74421550929002A37AD /* Info.plist */,
 				8BB5B750215C24E6002A37AD /* GameSound.wav */,
-				8BB5B74E215BE5EA002A37AD /* QuizManager.swift */,
 			);
 			path = EnhanceQuizStarterApp;
 			sourceTree = "<group>";

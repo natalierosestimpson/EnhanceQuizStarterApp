@@ -1,22 +1,11 @@
-//
-//  QuizManager.swift
-//  EnhanceQuizStarterApp
-//
-//  Created by James Devlin on 26/09/2018.
-//  Copyright © 2018 Natalie Stimpson. All rights reserved.
-//
+//the code below introduces an array variable which holds the randomised trivia and a function to pick questions out of the array
 
 var quizQuestions = QuizQuestions()
+var randomTrivia : [questionData] = quizQuestions.shuffleTrivia()
 
-class QuizManager {
-    var questionsAskedAlready : [Int]
-    
-    init(){
-        self.questionsAskedAlready = []
-    }
-    
-    func markQuestionAsAlreadyUsed(index : Int) {
-        questionsAskedAlready.append(index)
-    }
+func randomiseTriviaAgain() -> [questionData] {
+    randomTrivia = quizQuestions.shuffleTrivia()
+    return randomTrivia
 }
+
 
